@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_finger_print_device_id,finger.print.device,model_finger_print_device,base.group_user,1,1,1,1
+access_config_device_id,config.device,model_config_device,base.group_user,1,1,1,1
+access_attendance_log_id,attendance.log,model_attendance_log,base.group_user,1,1,1,1
+access_inherit_emp_id,inherit.emp,model_inherit_emp,base.group_user,1,1,1,1

@@ -1,0 +1,102 @@
+<odoo>
+    <record model="ir.ui.view" id="hr_employee_inherit_id_view">
+        <field name="name">hr.employee.inherit.id.view</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//form/sheet/notebook/page[@name='hr_settings']/group/group[@name='identification_group']"
+                   position="after">
+
+
+                <group string="Biometric Details" style="font-weight: bold;">
+                    <group>
+                        <field name="finger_print_id" string="Finger Print ID"/>
+                        <field name="card_id" string="Card id"/>
+                        <field name="password" string="Password"/>
+                    </group>
+                    <group>
+                       <!-- this is for show  -->
+<!--                        <field name="finger_data" string="finger data" />-->
+<!--                        <field name="face_data" string="face data" />-->
+                <!-- this is for hide -->
+    <field name="finger_data" string="Finger Data" invisible="1"/>
+    <field name="face_data" string="Face Data" invisible="1"/>
+                    </group>
+
+                </group>
+
+            </xpath>
+
+
+<!--<xpath expr="//form/sheet/div/field[@name='image_1920']" position="after">-->
+<!--  <div style="position: relative; display: inline-block;" >-->
+
+<!-- <field name="image_1920" style="display: block; width: 60px; height: 60px; border-radius: 5px;"/>-->
+<!--  </div>-->
+
+<!-- <span style="-->
+<!--            position: absolute;-->
+<!--            bottom: 10px; /* Place number near the bottom of the image */-->
+<!--            left: 50%;-->
+<!--            transform: translateX(-50%);-->
+<!--            background: rgba(255, 255, 255, 0.8); /* Light white background with transparency */-->
+<!--            color: black; /* Black text color for visibility */-->
+<!--            padding: 3px 8px; /* Smaller padding for a smaller number */-->
+<!--            font-size: 12px; /* Smaller font size */-->
+<!--            font-weight: bold;-->
+<!--            border-radius: 2px; /* Slight border radius for rounded corners */-->
+<!--            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Soft shadow for better visibility */-->
+<!--            z-index: 10;"> &lt;!&ndash; Ensures the number stays on top of the image &ndash;&gt;-->
+<!--            134-->
+<!--        </span>-->
+<!--</xpath>-->
+<!--<xpath expr="//form/sheet/div/field[@name='image_1920']" position="replace">-->
+<!--    <div style="position: relative; display: inline-block;">-->
+<!--        &lt;!&ndash; Image field displayed with a fixed size &ndash;&gt;-->
+<!--        <field name="image_1920" style="display: block; width: 60px; height: 60px;"/>-->
+
+<!--        &lt;!&ndash; Static number inside the image &ndash;&gt;-->
+<!--        <span style="-->
+<!--            position: absolute;-->
+<!--            bottom: 5px; /* Place number inside near the bottom of the image */-->
+<!--            left: 50%;-->
+<!--            transform: translateX(-50%);-->
+<!--            background: rgba(255, 255, 255, 0.8); /* White background with slight transparency */-->
+<!--            color: black; /* Black text for better contrast */-->
+<!--            padding: 3px 8px; /* Smaller padding for compact number */-->
+<!--            font-size: 12px; /* Smaller font size */-->
+<!--            font-weight: bold;-->
+<!--            border-radius: 2px; /* Slightly rounded corners */-->
+<!--            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Soft shadow for better visibility */-->
+<!--            z-index: 10;"> &lt;!&ndash; Ensures the number stays on top of the image &ndash;&gt;-->
+<!--            134-->
+<!--        </span>-->
+<!--    </div>-->
+<!--</xpath>-->
+
+
+<!--            <xpath expr="//form/sheet/div/field[@name='image_1920']" position="after">-->
+<!--                <div>-->
+<!--                    <span style="text-align:center">134</span>-->
+<!--                </div>-->
+
+<!--            </xpath>-->
+
+            <!--<xpath expr="//form/sheet/notebook/page[@name='hr_settings']/group/group[@name='identification_group']" position="after">-->
+            <!--    <group>-->
+            <!--        <field name="finger_print_id" string="Finger print ID"/>-->
+            <!--    </group>-->
+            <!--</xpath>-->
+
+            <!--   it works without showing label         -->
+            <!--            <xpath expr="//form/sheet/notebook/page[@name='hr_settings']/group/group[@name='identification_group']/div" position="after">-->
+            <!--    <div>-->
+            <!--        <field name="finger_print_id" string="Fingerprint ID"/>-->
+            <!--    </div>-->
+            <!--</xpath>-->
+
+
+        </field>
+    </record>
+</odoo>

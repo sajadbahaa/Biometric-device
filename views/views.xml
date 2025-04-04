@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+
+        <!--  Attendance -->
+        <record model="ir.ui.view" id="attendance_log_list">
+            <field name="name">attendance log list</field>
+            <field name="model">attendance_log</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="enroll_id"/>
+                    <field name="employee_name" string="Employee"/>
+                    <field name="my_datetime"/>
+                    <field name="event"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Attendance -->
+        <!--      <record model="ir.actions.server" id="action_send_attendance_log">-->
+        <!--          <field name="name">send</field>-->
+        <!--          <field name="binding_model_id" ref="model_attendance_log"/>-->
+        <!--          <field name="model_id" ref="model_attendance_log"/>-->
+        <!--          <field name="state">code</field>-->
+        <!--&lt;!&ndash;          <field name="code">model.action_show_hello()</field>&ndash;&gt;-->
+        <!--          <field name="code">-->
+        <!--          <![CDATA[-->
+        <!--         model.action_show_hello()-->
+        <!--]]>-->
+        <!--          </field>-->
+        <!--&lt;!&ndash;        <field name="context">{'default_model': 'attendance.log', 'default_res_id': active_id}</field>&ndash;&gt;-->
+        <!--      </record>-->
+
+        <!--      <record model="ir.actions.server" id="action_send_attendance_log">-->
+        <!--    <field name="name">send</field>-->
+        <!--    <field name="binding_model_id" ref="model_attendance_log"/>-->
+        <!--    <field name="model_id" ref="model_attendance_log"/>-->
+        <!--    <field name="state">code</field>-->
+        <!--    <field name="code">-->
+        <!--        <![CDATA[-->
+        <!--        if not records:-->
+        <!--            raise UserError("لم يتم تحديد أي سجل!")-->
+
+        <!--        record = records[0]  # الحصول على أول سجل محدد-->
+        <!--        record.action_show_hello()-->
+        <!--        ]]>-->
+        <!--    </field>-->
+        <!--</record>-->
+
+        <record model="ir.actions.act_window" id="attendance_log_id_action_window">
+            <field name="name">Attendance loging</field>
+            <field name="res_model">attendance_log</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!--      <record model="ir.ui.view" id="attendance_log_tree_view">-->
+        <!--    <field name="name">attendance log action dropdown</field>-->
+        <!--    <field name="model">attendance_log</field>-->
+        <!--    <field name="arch" type="xml">-->
+        <!--        <header><button name="%(action_send_attendance_log)d" type="action" string="Send"/></header>-->
+
+        <!--    </field>-->
+        <!--</record>-->
+
+        <!--                act.window         -->
+
+
+        <!-- Device configuraton-->
+        <record model="ir.ui.view" id="config_device_list">
+            <field name="name">Config device list</field>
+            <field name="model">config_device</field>
+
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" optional="hide"/>
+                    <field name="name"/>
+                    <field name="serial_number"/>
+                    <field name="api_url" optional="hide"/>
+                    <field name="device_status" optional="hide"/>
+                    <!--                <button name="finger_add" string="finger +" type="object"/>-->
+                    <!--                    <button name="face_add" string="face " type="object"/>-->
+                    <!--                    <button name="card_add" string="card" type="object"/>-->
+                    <!--                    <button name="password_add" string="password" type="object"/>-->
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="config_device_form">
+
+            <field name="name">config device form</field>
+            <field name="model">config_device</field>
+            <field name="arch" type="xml">
+                <form>
+<!--                    <header>-->
+<!--                        &lt;!&ndash; we will write &ndash;&gt;-->
+<!--                        <button name="get_all_log" string="Add To Biomertric Devices" type="object"/>-->
+<!--                    </header>-->
+                    <sheet>
+                        <group>
+
+                            <group colspan="2">
+                                <group string="Device Info">
+                                    <field name="name"/>
+                                    <field name="serial_number"/>
+                                    <field name="api_url"/>
+                                    <field name="device_status" string="Is a master"/>
+                                </group>
+                                <!--                          <field name="device_id" readonly="0" />-->
+                            </group>
+
+                            <!--                              <group colspan="2" attrs="{'invisible': [('device_status', '=', True)]}">-->
+                            <!--                        <group string="Employees">-->
+                            <!--                            <field name="employee_id"/>-->
+                            <!--                        </group>-->
+                            <!--                    </group>-->
+
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+        <!--         Actions           -->
+
+        <!--  defualt    -->
+
+        <!--          <record model="ir.actions.act_window" id="hr_employee_id_action_window">-->
+        <!--      <field name="name">employees list</field>-->
+        <!--      <field name="res_model">hr.employee</field>-->
+        <!--      <field name="view_mode">tree,form</field>-->
+        <!--    </record>-->
+
+
+        <!--   create inherit Employee list new -->
+        <record model="ir.ui.view" id="inherit_emp_form">
+
+            <field name="name">inherit emp form</field>
+            <field name="model">inherit_emp</field>
+            <field name="arch" type="xml">
+                <form>
+<!--<header>-->
+<!--    <field name="employee_id" readonly="1"/>-->
+<!--</header>-->
+                    <sheet>
+                        <group>
+                            <group>
+                                <group colspan="3">
+
+                                    <field name="employee_id" readonly="1"/>
+                                    <field name="finger_print_id" string="Finger Print ID"/>
+
+                                    <p colspan="4">Finger Print :
+                                        <button name="Finger_Print" string="Finger Enroll" type="object"/>
+                                        <button name="delete_finger_data" string="Delete Finger Data" type="object"/>
+                                    </p>
+                                    <p colspan="4">Face Data :
+                                        <button name="Face_Data" string="Face Enroll" type="object"/>
+                                        <button name="delete_face_data" string="Delete Face Data" type="object"/>
+                                    </p>
+                                </group>
+
+
+                                <!--                                <field name="finger_data" string="finger data"/>-->
+                                <!--                                <field name="face_data" string="face data"/>-->
+
+                                <group>
+                                    <field name="card_id" string="Card ID"/>
+                                    <field name="password" string="Password"/>
+                                    <field name="device_id" string="Enroll device"/>
+                                </group>
+                            </group>
+
+                            <group>
+                                <field name="image" widget="image" style="width:100px;height:auto"/>
+                            </group>
+                            <hr style="width: 100%; border: 1px solid ; margin-top: 10px; margin-bottom: 10px;"/>
+
+                            <!--                            <group>-->
+                            <!--                                <p colspan="4">Select Other Device : <field name="many_devices" domain="[('device_status', '=', False)]" widget="many2many_tags"/></p>-->
+                            <!--                            </group>-->
+
+                            <group colspan="2">
+                                <field name="many_devices" domain="[('device_status', '=', False)]" string="Devices"/>
+                            </group>
+                            <group >
+                            <group >
+                                <div style="display: flex; gap: 40px;white-space: nowrap;">
+
+                                    <button name="device_add_finger" string="Add Finger" type="object"/>
+                                    <button name="device_add_face" string="Add Face" type="object"/>
+                                    <button name="device_add_card" string="Add Card" type="object"/>
+                                    <button name="device_add_password" string="Add Password" type="object"/>
+                                    <button name="delete_emp_from_device" string="Delete Employee from Devices" type="object"/>
+                                </div>
+                            </group>
+
+                            </group>
+
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Employee list tree  -->
+        <record model="ir.ui.view" id="inherit_emp_list">
+            <field name="name">inherit_emp list</field>
+            <field name="model">inherit_emp</field>
+
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="employee_id" readonly="1"/>
+                    <field name="finger_print_id" optional="hide" readonly="1"/>
+                    <field name="is_register" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record model="ir.actions.act_window" id="inherit_emp_id_action_window">
+            <field name="name">Employees</field>
+            <field name="res_model">inherit_emp</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Employee list   -->
+
+
+        <record model="ir.actions.act_window" id="configuration_device_id_action">
+            <field name="name">device config</field>
+            <field name="res_model">config_device</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- Top menu item -->
+
+        <menuitem name="Biometric Device Manager" id="ai_Finger_Print_module.menu_root" sequence="1"/>
+
+
+        <!-- menu categories -->
+
+        <menuitem name="Employee List" id="ai_Finger_Print_module.home_page" parent="ai_Finger_Print_module.menu_root"
+                  action="inherit_emp_id_action_window" sequence="2"/>
+
+        <menuitem name="manager" id="ai_Finger_Print_module.manager" parent="ai_Finger_Print_module.menu_root"
+                  sequence="3"/>
+
+
+        <!-- actions -->
+
+        <menuitem name="Device configuration" id="ai_Finger_Print_module.configration"
+                  parent="ai_Finger_Print_module.manager"
+                  action="configuration_device_id_action"/>
+        <menuitem name="Attendance log" id="ai_Finger_Print_module.attendance_log" parent="ai_Finger_Print_module.manager"
+                  action="attendance_log_id_action_window"/>
+    </data>
+</odoo>
+
+

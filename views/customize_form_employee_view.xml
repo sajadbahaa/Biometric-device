@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <!-- Inheriting the existing tree view by ref -->
+        <record id="attendance_log_inherit_view" model="ir.ui.view">
+            <field name="name">attendance_log.tree.inherit</field>
+            <field name="model">attendance_log</field>
+            <field name="inherit_id" ref="ai_finger_print_modul.attendance_log_list"/>
+            <field name="arch" type="xml">
+                <!-- Add a button before the tree -->
+                <xpath expr="//tree" position="before">
+                    <button name="action_show_hello" type="object" string="Show Hello" class="btn-primary"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+
+<!--</odoo>-->
